@@ -42,7 +42,17 @@ let router = new Router({
       path: '/distribution',
       name: 'distribution',
       component: () => import('./views/distribution.vue'),
+    }, {//新闻中心
+      path: '/news',
+      name: 'news',
+      meta:{keepAlive:true},
+      component: () => import('./views/news.vue')
+    }, {//新闻详情
+      path: '/news_detail',
+      name: 'news_detail',
+      component: () => import('./components/news/news_detail.vue')
     }
+
   ]
 })
 export default router

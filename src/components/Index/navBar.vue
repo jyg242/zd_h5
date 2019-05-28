@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <ul>
-      <router-link to>
+      <router-link to='/news'>
         <li>
           <i class="navbar-news"></i>
           <span>新闻中心</span>

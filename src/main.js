@@ -7,8 +7,8 @@ import './assets/css/reset.css' //重置样式
 import './assets/css/style.css' //矢量图
 
 Vue.config.productionTip = false
-import {Button, NavBar,icon,Swipe, SwipeItem,Lazyload,NoticeBar,Card,Row, Col } from 'vant'
-Vue.use(Button).use(NavBar).use(icon).use(Swipe).use(SwipeItem).use(Lazyload).use(NoticeBar).use(Card).use(Row).use(Col)
+import {Button, NavBar,icon,Swipe, SwipeItem,Lazyload,NoticeBar,Card,Row, Col,List,PullRefresh } from 'vant'
+Vue.use(Button).use(NavBar).use(icon).use(Swipe).use(SwipeItem).use(Lazyload).use(NoticeBar).use(Card).use(Row).use(Col).use(List).use(PullRefresh)
 new Vue({
   router,
   store,

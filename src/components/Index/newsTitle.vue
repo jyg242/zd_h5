@@ -2,46 +2,17 @@
   <div class="newstitle">
     <div class="newstitle-tit">
       <h4>新闻速递</h4>
-      <span>更多</span>
+      <span>
+        <router-link to="/news">更多</router-link>
+      </span>
     </div>
     <ul>
-      <li>
-        <img
-          class="newstitle-img"
-          width="100%"
-          src="//cms-bucket.ws.126.net/2019/05/24/05c340c395cc4463a6590d5050dae12f.png?imageView&thumbnail=234y146&quality=45&interlace=1&enlarge=1&type=webp"
-          alt
-        >
+      <li v-for="item in list" :key="item._id">
+        <img class="newstitle-img" width="100%" :src="item.IMG_MIN" alt>
         <div class="newstitle-content">
-          <h6>第十六届省人大会议今日召开</h6>
-          <span>发布时间 : 2018-06-12</span>
-          <span>鹅鹅鹅,曲项向天歌.白毛浮绿水,红掌拨清波.</span>
-        </div>
-      </li>
-      <li>
-        <img
-          class="newstitle-img"
-          width="100%"
-          src="//cms-bucket.ws.126.net/2019/05/24/05c340c395cc4463a6590d5050dae12f.png?imageView&thumbnail=234y146&quality=45&interlace=1&enlarge=1&type=webp"
-          alt
-        >
-        <div class="newstitle-content">
-          <h6>第十六届省人大会议今日召开</h6>
-          <span>发布时间 : 2018-06-12</span>
-          <span>鹅鹅鹅,曲项向天歌.白毛浮绿水,红掌拨清波.</span>
-        </div>
-      </li>
-      <li>
-        <img
-          class="newstitle-img"
-          width="100%"
-          src="//cms-bucket.ws.126.net/2019/05/24/05c340c395cc4463a6590d5050dae12f.png?imageView&thumbnail=234y146&quality=45&interlace=1&enlarge=1&type=webp"
-          alt
-        >
-        <div class="newstitle-content">
-          <h6>第十六届省人大会议今日召开</h6>
-          <span>发布时间 : 2018-06-12</span>
-          <span>鹅鹅鹅,曲项向天歌.白毛浮绿水,红掌拨清波.</span>
+          <h6>{{item.TITLE}}</h6>
+          <span>发布时间 : {{changeTime(item.createAt)}}</span>
+          <span>{{item.INTRO}}</span>
         </div>
       </li>
     </ul>
@@ -49,7 +20,37 @@
 </template>
 
 <script>
-export default {};
+import serviceApi from "../../api/axios";
+import changeTime from '../../util/time_change'
+export default {
+  data() {
+      this.changeTime=changeTime
+    return {
+      list: []
+    };
+  },
+  methods: {
+    async get_desc() {
+      let {
+        status,
+        data: { data }
+      } = await serviceApi.get("/news/getNews", {
+        params: {
+          key: 4,
+          page: 1
+        }
+      });
+      if (status == 200 && data.length > 0) {
+        let res = data.slice(0, 3);
+        this.list = res;
+        console.log(res);
+      }
+    }
+  },
+  mounted() {
+    this.get_desc();
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -64,17 +65,19 @@ export default {};
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ad8757;
-    h4{
-        font-size: px2rem(12);
+    h4 {
+      font-size: px2rem(12);
     }
-    span{
-        font-size: px2rem(12);
+    span {
+      font-size: px2rem(12);
+      a {
+        color: #ad8757;
+      }
     }
   }
-  
   li {
     background: white;
-    margin-bottom: px2rem(3);
+    margin-bottom: px2rem(5);
     display: flex;
     box-sizing: border-box;
     padding: px2rem(3);
@@ -94,6 +97,9 @@ export default {};
     justify-content: space-between;
     h6 {
       font-size: px2rem(12);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     p {
       font-size: px2rem(14);

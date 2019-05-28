@@ -1,29 +1,40 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <headerBar class="header"></headerBar>
     <router-view/>
+    <footerBar class="footer"></footerBar>
   </div>
 </template>
-
+<script>
+import headerBar from "./layouts/header";
+import footerBar from "./layouts/footer";
+export default {
+  components: {
+    headerBar,
+    footerBar
+  }
+};
+</script>
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  font-family: "PingFang", Helvetica, Arial, Microsoft YaHei, Simsun, sans-serif;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999 !important;
+}
+.footer {
+  margin-top: px2rem(8.5);
+}
+
+a {
+  color: #666;
+  text-decoration: none;
+}
+.router-link-active {
+  text-decoration: none;
 }
 </style>

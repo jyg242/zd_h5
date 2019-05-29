@@ -25,7 +25,7 @@ export default {
       } = await serviceApi.get("/banner/getImg");
       if (status == 200 && data) {
         // this.images = data;
-        console.log(data);
+        // console.log(data);
       }
     }
   },

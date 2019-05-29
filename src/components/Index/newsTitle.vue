@@ -7,7 +7,7 @@
       </span>
     </div>
     <ul>
-      <li v-for="item in list" :key="item._id">
+      <li v-for="item in list" :key="item._id"  @click="go_detail(item._id)">
         <img class="newstitle-img" width="100%" :src="item.IMG_MIN" alt>
         <div class="newstitle-content">
           <h6>{{item.TITLE}}</h6>
@@ -43,8 +43,12 @@ export default {
       if (status == 200 && data.length > 0) {
         let res = data.slice(0, 3);
         this.list = res;
-        console.log(res);
+        // console.log(res);
       }
+    },
+    //跳转详情页
+    go_detail(id){
+        this.$router.push({name:'news_detail',query:{key:id}})
     }
   },
   mounted() {

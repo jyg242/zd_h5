@@ -2,28 +2,34 @@
   <div class="recruit">
     <div class="recruit-img"></div>
     <div class="recruit-content">
-      <div class="recruit-content-item">
-        <h5>徐州恒顺广场项目</h5>
+      <div class="recruit-content-item" v-for="item in list" :key="item._id" @click="$router.push({name:'distribution_detail',query:{id:item._id}})">
+        <h5>{{item.title}}</h5>
       </div>
-      <div class="recruit-content-item">
-        <h5>南京广电总局项目</h5>
-      </div>
-      <div class="recruit-content-item">
-        <h5>徐州人力资源中心项目</h5>
-      </div>
-      <div class="recruit-content-item">
-        <h5>全椒县路灯项目</h5>
-      </div>
+      
     </div>
   </div>
 </template>
 
 <script>
-import jobItem from "../components/recruit/recruit_list";
+import serviceApi from '../api/axios'
 export default {
-  components: {
-    jobItem
-  }
+    data() {
+        return {
+            list: []
+        }
+    },
+    methods: {
+        async getTitle() {
+            let {status,data:{data}}=await serviceApi.get('/industry/getIndustry')
+            if(status==200&&data.length>0){
+                // console.log(data)
+                this.list=data      
+            }
+        }
+    },
+    mounted () {
+        this.getTitle();
+    },
 };
 </script>
 
@@ -49,7 +55,6 @@ export default {
       margin-bottom: px2rem(5);
       border-radius: 4%;
       background: white;
-    //   opacity: 0.6;
       h5 {
         font-size: px2rem(10);
         text-align: center;

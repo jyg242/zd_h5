@@ -1,11 +1,11 @@
 <template>
   <div class="recruit">
     <div class="recruit-img"></div>
-    <div class="recruit-content">
-      <div class="left duty-content">
+    <div class="recruit-content" >
+      <div class="left duty-content" data-name='1' @click="goCs">
           <h6>慈善事业</h6>
       </div>
-      <div class="right duty-content">
+      <div class="right duty-content" data-name='2' @click="goGy">
           <h6>公益活动</h6>
       </div>
     </div>
@@ -14,11 +14,16 @@
 </template>
 
 <script>
-import jobItem from "../components/recruit/recruit_list";
+
 export default {
-  components: {
-    jobItem
-  }
+    methods: {
+       goCs(){
+           this.$router.push({path:'/duty/detail',query:{title:'慈善事业'}})
+       },
+       goGy(){
+           this.$router.push({path:'/duty/detail',query:{title:'公益事业'}})
+       }   
+    },
 };
 </script>
 

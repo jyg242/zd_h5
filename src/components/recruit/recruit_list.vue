@@ -51,7 +51,7 @@ export default {
 <style lang="scss" scoped>
 .recuit-item {
   width: 100%;
-  height: px2rem(80);
+  height: px2rem(85);
   background: white;
   overflow: hidden;
   padding: px2rem(5) px2rem(8);

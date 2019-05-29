@@ -23,7 +23,7 @@ export default {
     this.timeChange = time_change;
     return {
       news: [],
-      isShow:false
+      isShow: false
     };
   },
   methods: {
@@ -38,7 +38,7 @@ export default {
       });
       if (status == 200 && data.length > 0) {
         console.log(data);
-        this.isShow=!this.isShow
+        this.isShow = !this.isShow;
         this.news = data[0];
       }
     }
@@ -71,12 +71,11 @@ export default {
       }
       p {
         margin-top: px2rem(4);
+        margin-bottom: px2rem(25);
         span {
           font-size: px2rem(4);
+          margin-right: px2rem(10);
         }
-      }
-      .detail {
-        // font-size: px2rem();
       }
     }
   }

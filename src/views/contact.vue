@@ -13,11 +13,8 @@
 </template>
 
 <script>
-import jobItem from "../components/recruit/recruit_list";
 export default {
-  components: {
-    jobItem
-  }
+ 
 };
 </script>
 

@@ -6,13 +6,15 @@
       <ul>
         <li><router-link to="/">首页</router-link></li>
         <li><router-link to="/contact">联系我们</router-link></li>
+        <li><a href="http://www.cninfo.com.cn/new/disclosure/stock?orgId=gssz0000609&stockCode=000609&tabName=data">投资者关系</a></li>
         <li><router-link to="/disclaimer">免责声明</router-link></li>
+        
       </ul>
     </div>
     <div class="footer-copyright">
       <p>Copyright ©1968-2019</p>
-      <p>美的集团股份有限公司 粤ICP备09215446号</p>
-      <p>粤公网安备44060602000243号</p>
+      <p>北京中迪投资股份有限公司 京ICP备09215446号</p>
+      <p>京公网安备44060602000243号</p>
     </div>
   </div>
 </template>

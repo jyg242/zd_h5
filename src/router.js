@@ -38,14 +38,22 @@ let router = new Router({
       path: '/duty',
       name: 'duty',
       component: () => import('./views/duty.vue'),
+    }, {//社会责任详细
+      path: '/duty/detail',
+      name: 'duty_detail',
+      component: () => import('./components/duty/duty_detail.vue'),
     }, {//产业布局
       path: '/distribution',
       name: 'distribution',
       component: () => import('./views/distribution.vue'),
+    }, {//产业详细
+      path: '/distribution/detail',
+      name: 'distribution_detail',
+      component: () => import('./components/distribution/distribution_detail.vue'),
     }, {//新闻中心
       path: '/news',
       name: 'news',
-      meta:{keepAlive:true},
+      meta: { keepAlive: true },
       component: () => import('./views/news.vue')
     }, {//新闻详情
       path: '/news_detail',

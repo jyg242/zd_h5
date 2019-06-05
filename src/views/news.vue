@@ -1,9 +1,15 @@
 <template>
   <div class="recruit">
-    <div class="recruit-img"></div>
+    <div class="recruit-img" :style="{backgroundImage:'url('+img+')'}"></div>
     <div class="recruit-content">
       <van-pull-refresh v-model="isRefresh" @refresh="onRefresh">
-        <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" class="fontColor_a">
+        <van-list
+          v-model="loading"
+          :finished="finished"
+          finished-text="没有更多了"
+          @load="onLoad"
+          class="fontColor_a"
+        >
           <div class="list-item" v-for="item in list" :key="item._id" @click="go_detail(item._id)">
             <img class="newstitle-img" width="100%" :src="item.IMG_MIN" alt>
             <div class="newstitle-content">
@@ -29,6 +35,7 @@ export default {
   data() {
     this.time_change = time_change;
     return {
+      img: "http://192.168.10.144:8080/img/top_banner2.b92c07bd.jpg",
       list: [], //数据
       loading: false,
       finished: false, //上拉加载是否有数据
@@ -80,8 +87,8 @@ export default {
       }
     },
     //跳转详情页
-    go_detail(id){
-        this.$router.push({name:'news_detail',query:{key:id}})
+    go_detail(id) {
+      this.$router.push({ name: "news_detail", query: { key: id } });
     }
   }
   // mounted() {
@@ -96,7 +103,7 @@ export default {
   &-img {
     width: 100%;
     height: px2rem(130);
-    background-image: url("http://192.168.10.57:8080/img/top_banner2.b92c07bd.jpg");
+    // background-image: url("http://192.168.10.57:8080/img/top_banner2.b92c07bd.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
@@ -141,5 +148,4 @@ export default {
     }
   }
 }
-
 </style>

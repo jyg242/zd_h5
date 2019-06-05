@@ -1,20 +1,19 @@
 <template>
   <div class="recruit">
-    <div class="recruit-img"></div>
+    <div class="recruit-img" :style="{backgroundImage:'url('+img+')'}"></div>
     <div class="recruit-content">
-      <!-- <jobItem></jobItem>
-       -->
        <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import jobItem from "../components/recruit/recruit_list";
 export default {
-  components: {
-    jobItem
-  }
+data() {
+    return {
+        img: 'http://192.168.10.144:8080/img/top_banner5.076bf276.jpg'
+    }
+},
 };
 </script>
 
@@ -24,7 +23,7 @@ export default {
   &-img {
     width: 100%;
     height: px2rem(130);
-    background-image: url("http://192.168.10.57:8080/img/top_banner5.076bf276.jpg");
+    // background-image: url("http://192.168.10.57:8080/img/top_banner5.076bf276.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="recruit">
-    <div class="recruit-img"></div>
+    <div class="recruit-img" :style="{backgroundImage:'url('+img+')'}"></div>    
     <div class="recruit-content">
       <div class="recruit-content-item" v-for="item in list" :key="item._id" @click="$router.push({name:'distribution_detail',query:{id:item._id}})">
         <h5>{{item.title}}</h5>
@@ -15,7 +15,8 @@ import serviceApi from '../api/axios'
 export default {
     data() {
         return {
-            list: []
+            list: [],
+            img:'http://192.168.10.144:8080/img/top_banner.0d697682.jpg'
         }
     },
     methods: {
@@ -39,7 +40,7 @@ export default {
   &-img {
     width: 100%;
     height: px2rem(130);
-    background-image: url("http://192.168.10.57:8080/img/top_banner.0d697682.jpg");
+    // background-image: url("http://192.168.10.57:8080/img/top_banner.0d697682.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="recruit">
-    <div class="recruit-img"></div>
+    <div class="recruit-img" :style="{backgroundImage:'url('+img+')'}"></div>
     <div class="recruit-content">
       <div class="content_news" v-if="isShow">
         <h5>{{news.TITLE}}</h5>
@@ -22,6 +22,7 @@ export default {
   data() {
     this.timeChange = time_change;
     return {
+        img:'http://192.168.10.144:8080/img/top_banner2.b92c07bd.jpg',
       news: [],
       isShow: false
     };
@@ -37,7 +38,7 @@ export default {
         }
       });
       if (status == 200 && data.length > 0) {
-        console.log(data);
+        // console.log(data);
         this.isShow = !this.isShow;
         this.news = data[0];
       }
@@ -46,7 +47,7 @@ export default {
   mounted() {
     let key = this.$route.query.key;
     this.get_detail(key);
-    console.log(key);
+    // console.log(key);
   }
 };
 </script>
@@ -57,7 +58,7 @@ export default {
   &-img {
     width: 100%;
     height: px2rem(130);
-    background-image: url("http://192.168.10.57:8080/img/top_banner2.b92c07bd.jpg");
+    // background-image: url("http://192.168.10.57:8080/img/top_banner2.b92c07bd.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
